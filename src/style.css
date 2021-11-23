@@ -1,0 +1,79 @@
+h1 {
+  margin-bottom: 0;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+form {
+  width: 70%;
+  display: flex;
+}
+
+form span {
+  position: relative;
+  top: 33px;
+  left: -30px;
+}
+form button {
+  display: contents;
+}
+form input.form-control {
+  margin: 25px 0 0 12px;
+}
+.container {
+  max-width: 600px;
+}
+.weather-app-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.weather-app {
+  border: 1px solid rgb(218, 221, 225);
+  border-radius: 6px;
+  padding: 10px;
+}
+span.location-button-container {
+  margin: 33px 0 0 0;
+}
+
+.weather-main {
+  margin-top: 20px;
+}
+.weather-main img {
+  float: left;
+}
+.weather-main strong {
+  float: left;
+  line-height: 1;
+  font-size: 64px;
+}
+.btn-group-sm > .btn,
+.btn-sm {
+  padding: 0 0.3rem;
+  font-size: 14px;
+  border-radius: 0.2rem;
+}
+.btn-outline-primary {
+  color: rgba(19, 116, 197, 1);
+  border-color: rgba(19, 116, 197, 1);
+}
+.btn-outline-primary:hover {
+  color: #fff;
+  background-color: rgba(19, 116, 197, 0.8);
+  border-color: rgba(19, 116, 197, 1);
+}
+
+.btn-check:active + .btn-outline-primary,
+.btn-check:checked + .btn-outline-primary,
+.btn-outline-primary.active,
+.btn-outline-primary.dropdown-toggle.show,
+.btn-outline-primary:active {
+  color: #fff;
+  background-color: rgba(19, 116, 197, 0.8);
+  border-color: rgba(19, 116, 197, 1);
+}
+button#location-button {
+  display: contents;
+}
