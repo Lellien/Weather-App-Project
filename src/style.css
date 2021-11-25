@@ -19,7 +19,7 @@ form span {
 form button {
   display: contents;
 }
-form input.form-control {
+form input#city-input {
   margin: 25px 0 0 12px;
 }
 .container {
@@ -76,4 +76,9 @@ span.location-button-container {
 }
 button#location-button {
   display: contents;
+}
+
+span#time {
+  border: 1px solid rgb(218, 221, 225);
+  text-align: center;
 }
