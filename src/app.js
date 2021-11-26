@@ -5,6 +5,18 @@ function changeCityNameHeading(currentCity) {
   cityNameHeading.innerHTML = currentCityName;
 }
 
+//current date (local)
+function showDate(date) {
+  let dateDisplay = document.querySelector("#date");
+  dateDisplay.innerHTML = date;
+}
+
+//current time (local)
+function showTime(time) {
+  let timeDisplay = document.querySelector("#time");
+  timeDisplay.innerHTML = time;
+}
+
 // current weather
 function showCurrentTemp(temp) {
   let nowTemp = document.querySelector(".weather-main strong");
@@ -38,6 +50,8 @@ function showVisibility(visibility) {
 
 function injectData(cityData) {
   changeCityNameHeading([cityData.name, cityData.country]);
+  showDate(cityData.datetime.date);
+  showTime(cityData.datetime.time);
   showCurrentTemp(cityData.temp);
   describeWeather(cityData.description);
   function showExtraInfo() {
@@ -48,8 +62,74 @@ function injectData(cityData) {
   }
   showExtraInfo();
 }
+//format time
+function formatTime(timestamp) {
+  let currentHours = timestamp.getHours();
+  currentHours = currentHours.toString().padStart(2, "0");
 
+  let currentMinutes = timestamp.getMinutes();
+  currentMinutes = currentMinutes.toString().padStart(2, "0");
+
+  return `${currentHours}:${currentMinutes}`;
+}
+
+//format date
+
+function addDateSuffix(dateValue) {
+  let firstDates = [1, 21, 31];
+  let secondDates = [2, 22];
+  let thirdDates = [3, 23];
+  let dateSuffix = "";
+  if (firstDates.includes(dateValue)) {
+    dateSuffix = "st";
+  } else if (secondDates.includes(dateValue)) {
+    dateSuffix = "nd";
+  } else if (thirdDates.includes(dateValue)) {
+    dateSuffix = "rd";
+  } else {
+    dateSuffix = "th";
+  }
+  return dateSuffix;
+}
+
+function formatDate(date) {
+  let weekDays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let currentDay = weekDays[date.getDay()];
+
+  let currentDate = date.getDate();
+  let dateSuffix = addDateSuffix(currentDate);
+
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  let currentMonth = months[date.getMonth()];
+
+  return `${currentDay}, ${currentDate}${dateSuffix} of ${currentMonth}`;
+}
 function formatCity(data) {
+  let localDatetime = new Date(data.dt * 1000 + data.timezone * 1000);
+  let localDate = formatDate(localDatetime);
+  let localTime = formatTime(localDatetime);
   function calculateWindDirection(deg) {
     let direction = "";
     if ((0 <= deg && deg < 11.25) || (348.75 <= deg && deg <= 360)) {
@@ -111,6 +191,7 @@ function formatCity(data) {
   let formattedCity = {
     name: data.name,
     country: data.sys.country,
+    datetime: { date: localDate, time: localTime },
     temp: Math.round(data.main.temp),
     humidity: data.main.humidity,
     description: data.weather[0].description,
