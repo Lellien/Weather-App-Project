@@ -197,7 +197,7 @@ function formatCity(data) {
     description: data.weather[0].description,
     wind: {
       direction: windDirection,
-      speed: Math.round(data.wind.speed * 2.2369363),
+      speed: Math.round(data.wind.speed * 2.2369363), //convert to miles
     },
     visibility: {
       km: Math.round(data.visibility / 1000),
@@ -237,5 +237,25 @@ function getCityName(event) {
 let citySearchForm = document.querySelector("form");
 citySearchForm.addEventListener("submit", getCityName);
 
+//temp °C/°F
+
+function showFahrenheit() {
+  let tempValues = document.querySelectorAll(".temp");
+  tempValues.forEach(function (element) {
+    element.innerHTML = Math.round(element.innerHTML * 1.8 + 32);
+  });
+}
+
+function showCelsius() {
+  let tempValues = document.querySelectorAll(".temp");
+  tempValues.forEach(function (element) {
+    element.innerHTML = Math.round((element.innerHTML - 32) / 1.8);
+  });
+}
+
 let celsiusButton = document.querySelector("#btnradio1");
+celsiusButton.addEventListener("change", showCelsius);
+
 let fahrenheitButton = document.querySelector("#btnradio2");
+fahrenheitButton.addEventListener("change", showFahrenheit);
+
