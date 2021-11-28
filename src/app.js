@@ -23,6 +23,15 @@ function showCurrentTemp(temp) {
   nowTemp.innerHTML = temp;
 }
 
+//weather condition icon
+function showIcon(code, text) {
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${code}@2x.png`
+  );
+  iconElement.setAttribute("alt", text);
+}
 function describeWeather(description) {
   let currentDescription = document.querySelector("#weather-description");
   currentDescription.innerHTML = description;
@@ -61,6 +70,7 @@ function injectData(cityData) {
     showVisibility(cityData.visibility);
   }
   showExtraInfo();
+  showIcon(cityData.icon, cityData.description);
 }
 //format time
 function formatTime(timestamp) {
@@ -203,6 +213,7 @@ function formatCity(data) {
       km: Math.round(data.visibility / 1000),
       index: visibilityIndex,
     },
+    icon: data.weather[0].icon,
   };
   injectData(formattedCity);
 }
