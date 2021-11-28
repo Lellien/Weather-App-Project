@@ -227,11 +227,7 @@ function checkUnit() {
   return selectedUnit;
 }
 
-function getCityName(event) {
-  event.preventDefault();
-  let citySearchInput = document.querySelector("#city-input");
-  let cityName = citySearchInput.value;
-
+function search(cityName) {
   let unit = checkUnit();
 
   let apiKey = "0392c3c6a728319e4bcd5bed20b65b72";
@@ -245,8 +241,14 @@ function getCityName(event) {
   }
 }
 
-let citySearchForm = document.querySelector("form");
-citySearchForm.addEventListener("submit", getCityName);
+function getCityName(event) {
+  event.preventDefault();
+  let citySearchInput = document.querySelector("#city-input");
+  search(citySearchInput.value);
+}
+
+let searchForm = document.querySelector("form#search-form");
+searchForm.addEventListener("submit", getCityName);
 
 //temp °C/°F
 
@@ -270,3 +272,4 @@ celsiusButton.addEventListener("change", showCelsius);
 let fahrenheitButton = document.querySelector("#btnradio2");
 fahrenheitButton.addEventListener("change", showFahrenheit);
 
+search("London");
