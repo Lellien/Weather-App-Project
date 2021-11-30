@@ -55,6 +55,30 @@ function showVisibility(visibility) {
   let currentVisibility = document.querySelector("#visibility");
   currentVisibility.innerHTML = `${visibility.index}/${visibility.km}km`;
 }
+
+function showForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Wed", "Thu", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+      <div class="weather-forecast-day">${day}</div>
+      <img
+        src="http://openweathermap.org/img/wn/04d@2x.png"
+        alt=""
+        width="42px"
+      />
+      <div class="weather-forecast-temps">
+      <span class="forecast-temp-hi">18°</span>
+      <span class="forecast-temp-lo">12°</span>
+      </div>
+      </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 // Search engine
 
 function injectData(cityData) {
@@ -71,6 +95,7 @@ function injectData(cityData) {
   }
   showExtraInfo();
   showIcon(cityData.icon, cityData.description);
+  showForecast();
 }
 //format time
 function formatTime(timestamp) {
