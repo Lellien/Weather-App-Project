@@ -56,7 +56,7 @@ function showVisibility(visibility) {
   currentVisibility.innerHTML = `${visibility.index}/${visibility.km}km`;
 }
 
-function showForecast() {
+function showForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Wed", "Thu", "Fri", "Sat"];
@@ -79,6 +79,15 @@ function showForecast() {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
+
+function getForecast(coordinates) {
+  let unit = checkUnit();
+
+  let apiKey = "0392c3c6a728319e4bcd5bed20b65b72";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${unit}`;
+  axios.get(apiUrl).then(showForecast);
+}
+
 // Search engine
 
 function injectData(cityData) {
@@ -95,7 +104,6 @@ function injectData(cityData) {
   }
   showExtraInfo();
   showIcon(cityData.icon, cityData.description);
-  showForecast();
 }
 //format time
 function formatTime(timestamp) {
@@ -262,6 +270,7 @@ function search(cityName) {
   function checkCity(response) {
     if (response) {
       formatCity(response.data);
+      getForecast(response.data.coord);
     }
   }
 }
