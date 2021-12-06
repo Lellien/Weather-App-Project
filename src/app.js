@@ -62,6 +62,7 @@ function formatDay(timestamp) {
   return days[day];
 }
 
+//display forecast data
 function showForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
@@ -78,6 +79,7 @@ function showForecast(response) {
         }@2x.png"
         alt=""
         width="42px"
+        class="forecast-icon"
       />
       <div class="weather-forecast-temps">
       <span class="forecast-temp-hi"><span class="temp">${Math.round(
@@ -94,12 +96,66 @@ function showForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function useDayMode() {
+  let appBorder = document.querySelector(".weather-app");
+  appBorder.classList.remove("night");
+  let cityImage = document.querySelector("#city-buildings");
+  cityImage.setAttribute("src", "images/city-day.svg");
+  let clockStyle = document.querySelector("#time");
+  clockStyle.classList.remove("night");
+  let tempButton = document.querySelectorAll(".btn-outline-primary");
+  tempButton.forEach(function (element) {
+    element.classList.remove("night");
+  });
+  let forecastIcon = document.querySelectorAll("img.forecast-icon");
+  forecastIcon.forEach(function (element) {
+    element.classList.remove("night");
+  });
+}
+
+function useNightMode() {
+  let appBorder = document.querySelector(".weather-app");
+  appBorder.classList.add("night");
+  let cityImage = document.querySelector("#city-buildings");
+  cityImage.setAttribute("src", "images/city-night.svg");
+  let clockStyle = document.querySelector("#time");
+  clockStyle.classList.add("night");
+  let tempButton = document.querySelectorAll(".btn-outline-primary");
+  tempButton.forEach(function (element) {
+    element.classList.add("night");
+  });
+  let forecastIcon = document.querySelectorAll("img.forecast-icon");
+  forecastIcon.forEach(function (element) {
+    element.classList.add("night");
+  });
+}
+
+function checkDayNight(data) {
+  let datetime = data.current.dt * 1000;
+  let timezone = data.timezone_offset * 1000;
+  let localTime = datetime + timezone;
+  let sunrise = data.current.sunrise * 1000;
+  let localSunrise = sunrise + timezone;
+  let sunset = data.current.sunset * 1000;
+  let localSunset = sunset + timezone;
+  if (localTime > localSunrise && localTime < localSunset) {
+    useDayMode();
+  } else {
+    useNightMode();
+  }
+}
+
+//Forecast API call from coordinates of first call
 function getForecast(coordinates) {
   let unit = checkUnit();
 
   let apiKey = "0392c3c6a728319e4bcd5bed20b65b72";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${unit}`;
-  axios.get(apiUrl).then(showForecast);
+  axios.get(apiUrl).then(useData);
+  function useData(response) {
+    showForecast(response);
+    checkDayNight(response.data);
+  }
 }
 
 // Search engine
@@ -288,7 +344,6 @@ function search(cityName) {
     }
   }
 }
-
 function getCityName(event) {
   event.preventDefault();
   let citySearchInput = document.querySelector("#city-input");
@@ -314,10 +369,10 @@ function showCelsius() {
   });
 }
 
-let celsiusButton = document.querySelector("#btnradio1");
+let celsiusButton = document.querySelector("#celsius-button");
 celsiusButton.addEventListener("change", showCelsius);
 
-let fahrenheitButton = document.querySelector("#btnradio2");
+let fahrenheitButton = document.querySelector("#fahrenheit-button");
 fahrenheitButton.addEventListener("change", showFahrenheit);
 
 //current location
@@ -334,6 +389,7 @@ function showPosition(position) {
 
   function getCurrentCity(response) {
     formatCity(response.data);
+    getForecast(response.data.coord);
   }
 }
 

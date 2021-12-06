@@ -22,18 +22,21 @@ form button {
 form input#city-input {
   margin: 25px 0 0 12px;
 }
-.container {
-  max-width: 600px;
-}
+
 .weather-app-wrapper {
   max-width: 600px;
   margin: 0 auto;
 }
 .weather-app {
-  border: 1px solid rgb(218, 221, 225);
+  border: 1px solid rgba(19, 116, 197, 0.3);
   border-radius: 6px;
   padding: 10px;
 }
+
+.weather-app.night {
+  border: 1px solid rgba(64, 28, 161, 0.25);
+}
+
 span.location-button-container {
   margin: 33px 0 0 0;
 }
@@ -59,10 +62,22 @@ span.location-button-container {
   color: rgba(19, 116, 197, 1);
   border-color: rgba(19, 116, 197, 1);
 }
+
+.btn-outline-primary.night {
+  color: rgba(64, 28, 161, 1);
+  border-color: rgba(64, 28, 161, 1);
+}
+
 .btn-outline-primary:hover {
   color: #fff;
   background-color: rgba(19, 116, 197, 0.8);
   border-color: rgba(19, 116, 197, 1);
+}
+
+.btn-outline-primary.night:hover {
+  color: #fff;
+  background-color: rgba(64, 28, 161, 0.8);
+  border-color: rgba(64, 28, 161, 1);
 }
 
 .btn-check:active + .btn-outline-primary,
@@ -73,6 +88,16 @@ span.location-button-container {
   color: #fff;
   background-color: rgba(19, 116, 197, 0.8);
   border-color: rgba(19, 116, 197, 1);
+}
+
+.btn-check:active + .btn-outline-primary.night,
+.btn-check:checked + .btn-outline-primary.night,
+.btn-outline-primary.night.active,
+.btn-outline-primary.night.dropdown-toggle.show,
+.btn-outline-primary.night:active {
+  color: #fff;
+  background-color: rgba(64, 28, 161, 0.8);
+  border-color: rgba(64, 28, 161, 1);
 }
 
 .weather-forecast {
@@ -94,6 +119,20 @@ button#location-button {
 }
 
 span#time {
-  border: 1px solid rgb(218, 221, 225);
+  background: rgba(176, 220, 249, 0.2);
+  border: 1px solid rgba(176, 220, 249, 0.9);
   text-align: center;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+span#time.night {
+  border: 1px solid rgba(64, 28, 161, 0.6);
+  background: rgba(64, 28, 161, 0.2);
+}
+li#weather-description::first-letter {
+  text-transform: capitalize;
+}
+
+img.forecast-icon.night {
+  filter: grayscale();
 }
