@@ -78,7 +78,6 @@ function showForecast(response) {
           forecastDay.weather[0].icon
         }@2x.png"
         alt=""
-        width="42px"
         class="forecast-icon"
       />
       <div class="weather-forecast-temps">
@@ -111,6 +110,10 @@ function useDayMode() {
   forecastIcon.forEach(function (element) {
     element.classList.remove("night");
   });
+  let extraInfo = document.querySelectorAll("ul.extra-info span");
+  extraInfo.forEach(function (element) {
+    element.classList.remove("night");
+  });
 }
 
 function useNightMode() {
@@ -126,6 +129,10 @@ function useNightMode() {
   });
   let forecastIcon = document.querySelectorAll("img.forecast-icon");
   forecastIcon.forEach(function (element) {
+    element.classList.add("night");
+  });
+  let extraInfo = document.querySelectorAll("ul.extra-info span");
+  extraInfo.forEach(function (element) {
     element.classList.add("night");
   });
 }

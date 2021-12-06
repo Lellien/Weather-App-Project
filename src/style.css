@@ -1,3 +1,6 @@
+body {
+  font-family: Roboto, sans-serif;
+}
 h1 {
   margin-bottom: 0;
 }
@@ -133,6 +136,18 @@ li#weather-description::first-letter {
   text-transform: capitalize;
 }
 
+img.forecast-icon {
+  width: 100%;
+}
 img.forecast-icon.night {
   filter: grayscale();
+}
+
+ul.extra-info span {
+  font-size: 14px;
+  color: rgba(19, 116, 197, 1);
+}
+
+ul.extra-info span.night {
+  color: rgba(64, 28, 161, 1);
 }
