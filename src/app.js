@@ -80,8 +80,12 @@ function showForecast(response) {
         width="42px"
       />
       <div class="weather-forecast-temps">
-      <span class="forecast-temp-hi">18°</span>
-      <span class="forecast-temp-lo">12°</span>
+      <span class="forecast-temp-hi"><span class="temp">${Math.round(
+        forecastDay.temp.max
+      )}</span>°</span>
+      <span class="forecast-temp-lo"><span class="temp">${Math.round(
+        forecastDay.temp.min
+      )}</span>°</span>
       </div>
       </div>`;
     }
