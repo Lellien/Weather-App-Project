@@ -3,6 +3,7 @@ body {
 }
 h1 {
   margin-bottom: 0;
+  line-height: 1.5z;
 }
 ul {
   list-style: none;
@@ -12,18 +13,16 @@ ul {
 form {
   width: 70%;
   display: flex;
+  align-items: center;
 }
 
-form span {
+form .search-button {
   position: relative;
-  top: 33px;
+  top: 2px;
   left: -30px;
 }
 form button {
   display: contents;
-}
-form input#city-input {
-  margin: 25px 0 0 12px;
 }
 
 .weather-app-wrapper {
@@ -41,7 +40,7 @@ form input#city-input {
 }
 
 span.location-button-container {
-  margin: 33px 0 0 0;
+  margin: 2px 0 0 0;
 }
 
 .weather-main {
@@ -61,43 +60,43 @@ span.location-button-container {
   font-size: 14px;
   border-radius: 0.2rem;
 }
-.btn-outline-primary {
+.unit-btn {
   color: rgba(19, 116, 197, 1);
   border-color: rgba(19, 116, 197, 1);
 }
 
-.btn-outline-primary.night {
+.unit-btn.night {
   color: rgba(64, 28, 161, 1);
   border-color: rgba(64, 28, 161, 1);
 }
 
-.btn-outline-primary:hover {
+.unit-btn:hover {
   color: #fff;
   background-color: rgba(19, 116, 197, 0.8);
   border-color: rgba(19, 116, 197, 1);
 }
 
-.btn-outline-primary.night:hover {
+.unit-btn.night:hover {
   color: #fff;
   background-color: rgba(64, 28, 161, 0.8);
   border-color: rgba(64, 28, 161, 1);
 }
 
-.btn-check:active + .btn-outline-primary,
-.btn-check:checked + .btn-outline-primary,
-.btn-outline-primary.active,
-.btn-outline-primary.dropdown-toggle.show,
-.btn-outline-primary:active {
+.btn-check:active + .unit-btn,
+.btn-check:checked + .unit-btn,
+.unit-btn.active,
+.unit-btn.dropdown-toggle.show,
+.unit-btn:active {
   color: #fff;
   background-color: rgba(19, 116, 197, 0.8);
   border-color: rgba(19, 116, 197, 1);
 }
 
-.btn-check:active + .btn-outline-primary.night,
-.btn-check:checked + .btn-outline-primary.night,
-.btn-outline-primary.night.active,
-.btn-outline-primary.night.dropdown-toggle.show,
-.btn-outline-primary.night:active {
+.btn-check:active + .unit-btn.night,
+.btn-check:checked + .unit-btn.night,
+.unit-btn.night.active,
+.unit-btn.night.dropdown-toggle.show,
+.unit-btn.night:active {
   color: #fff;
   background-color: rgba(64, 28, 161, 0.8);
   border-color: rgba(64, 28, 161, 1);
@@ -127,6 +126,7 @@ span#time {
   text-align: center;
   border-radius: 3px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  padding: 1px 3px;
 }
 span#time.night {
   border: 1px solid rgba(64, 28, 161, 0.6);
@@ -150,4 +150,13 @@ ul.extra-info span {
 
 ul.extra-info span.night {
   color: rgba(64, 28, 161, 1);
+}
+#city-buildings {
+  width: 100px;
+}
+
+@media (max-width: 500px) {
+  #city-buildings {
+    width: 70px;
+  }
 }

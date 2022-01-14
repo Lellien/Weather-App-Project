@@ -26,15 +26,14 @@
     <div class="container">
       <div class="weather-app-wrapper">
         <div class="weather-app">
-          <div class="clearfix">
+          <div class="d-flex align-items-center">
             <img
-              class="float-start"
+              class="img-fluid"
               id="city-buildings"
               src="images/city-day.svg"
               alt="city buildings"
-              width="100px"
             />
-            <form class="float-start" id="search-form">
+            <form id="search-form">
               <input
                 type="text"
                 class="form-control"
@@ -42,13 +41,13 @@
                 autocomplete="off"
                 id="city-input"
               />
-              <span>
+              <span class="search-button">
                 <button type="submit">
                   <i class="fas fa-search"></i>
                 </button>
               </span>
             </form>
-            <span class="location-button-container float-start">
+            <span class="location-button-container">
               <button id="location-button">
                 <i class="fas fa-location-arrow" id="location-arrow-icon"></i>
               </button>
@@ -63,7 +62,6 @@
             <li id="date"></li>
             <li id="weather-description"></li>
           </ul>
-
           <div class="row weather-main">
             <div class="col-7">
               <img src="" alt="" id="icon" />
@@ -81,9 +79,7 @@
                   autocomplete="off"
                   checked
                 />
-                <label class="btn btn-outline-primary" for="celsius-button"
-                  >°C</label
-                >
+                <label class="btn unit-btn" for="celsius-button">°C</label>
 
                 <input
                   type="radio"
@@ -92,9 +88,7 @@
                   id="fahrenheit-button"
                   autocomplete="off"
                 />
-                <label class="btn btn-outline-primary" for="fahrenheit-button"
-                  >°F</label
-                >
+                <label class="btn unit-btn" for="fahrenheit-button">°F</label>
               </div>
             </div>
             <div class="col-5">

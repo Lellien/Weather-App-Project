@@ -102,7 +102,7 @@ function useDayMode() {
   cityImage.setAttribute("src", "images/city-day.svg");
   let clockStyle = document.querySelector("#time");
   clockStyle.classList.remove("night");
-  let tempButton = document.querySelectorAll(".btn-outline-primary");
+  let tempButton = document.querySelectorAll(".unit-btn");
   tempButton.forEach(function (element) {
     element.classList.remove("night");
   });
@@ -123,7 +123,7 @@ function useNightMode() {
   cityImage.setAttribute("src", "images/city-night.svg");
   let clockStyle = document.querySelector("#time");
   clockStyle.classList.add("night");
-  let tempButton = document.querySelectorAll(".btn-outline-primary");
+  let tempButton = document.querySelectorAll(".unit-btn");
   tempButton.forEach(function (element) {
     element.classList.add("night");
   });
