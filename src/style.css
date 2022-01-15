@@ -3,13 +3,14 @@ body {
 }
 h1 {
   margin-bottom: 0;
-  line-height: 1.5z;
+  line-height: 1.5;
 }
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
+
 form {
   width: 70%;
   display: flex;
@@ -52,8 +53,9 @@ span.location-button-container {
 .weather-main strong {
   float: left;
   line-height: 1;
-  font-size: 64px;
+  font-size: calc(48px + 1.5vw);
 }
+
 .btn-group-sm > .btn,
 .btn-sm {
   padding: 0 0.3rem;
@@ -145,6 +147,7 @@ img.forecast-icon.night {
 
 ul.extra-info span {
   font-size: 14px;
+  font-weight: 500;
   color: rgba(19, 116, 197, 1);
 }
 
@@ -158,5 +161,14 @@ ul.extra-info span.night {
 @media (max-width: 500px) {
   #city-buildings {
     width: 70px;
+  }
+  .weather-main strong {
+    font-size: calc(36px + 1.5vw);
+  }
+  ul.extra-info {
+    font-size: 14px;
+  }
+  ul.extra-info span {
+    font-size: 13px;
   }
 }
