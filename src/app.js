@@ -247,7 +247,7 @@ function formatDate(date) {
   return `${currentDay}, ${currentDate}${dateSuffix} of ${currentMonth}`;
 }
 function formatCity(data) {
-  let localDatetime = new Date(data.dt * 1000 + data.timezone * 1000);
+  let localDatetime = new Date(data.dt * 1000 + (data.timezone - 3600) * 1000);
   let localDate = formatDate(localDatetime);
   let localTime = formatTime(localDatetime);
   function calculateWindDirection(deg) {
